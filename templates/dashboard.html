@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="dashboard-hero">
+    <div>
+        <p class="small-title">PROJECT OVERVIEW</p>
+        <h1>Welcome back, {{ user.name }} 👋</h1>
+        <p class="hero-sub">Role: <b>{{ user.role }}</b> | Track projects, tasks and deadlines in one place.</p>
+    </div>
+
+    {% if user.role == 'Admin' %}
+    <div class="hero-actions">
+    <a class="hero-btn primary-action" href="{{ url_for('create_project') }}">+ New Project</a>
+    <a class="hero-btn green-action" href="{{ url_for('create_task') }}">+ Assign Task</a>
+</div>
+    {% endif %}
+</div>
+
+<div class="dashboard-grid">
+    <div class="metric-card purple">
+        <span>Total Tasks</span>
+        <h2>{{ total_tasks }}</h2>
+        <p>All assigned work</p>
+    </div>
+
+    <div class="metric-card orange">
+        <span>Pending</span>
+        <h2>{{ pending }}</h2>
+        <p>Waiting to start</p>
+    </div>
+
+    <div class="metric-card blue">
+        <span>In Progress</span>
+        <h2>{{ progress }}</h2>
+        <p>Currently active</p>
+    </div>
+
+    <div class="metric-card green">
+        <span>Completed</span>
+        <h2>{{ completed }}</h2>
+        <p>Finished tasks</p>
+    </div>
+</div>
+
+<div class="content-layout">
+    <div class="main-panel">
+        <div class="section-heading">
+            <h3>Recent Tasks</h3>
+            <a href="{{ url_for('tasks') }}">View all →</a>
+        </div>
+
+        <div class="modern-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Status</th>
+                        <th>Due Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks[:5] %}
+                    <tr>
+                        <td>{{ task.title }}</td>
+                        <td>
+                            <span class="status-pill {{ task.status|lower|replace(' ', '-') }}">
+                                {{ task.status }}
+                            </span>
+                        </td>
+                        <td>{{ task.due_date }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="3" class="empty-row">No tasks created yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="side-panel">
+        <h3>Quick Summary</h3>
+
+        <div class="summary-item">
+            <span>Overdue Tasks</span>
+            <b>{{ overdue }}</b>
+        </div>
+
+        <div class="summary-item">
+            <span>Total Projects</span>
+            <b>{{ projects|length }}</b>
+        </div>
+
+        <div class="summary-item">
+            <span>Total Users</span>
+            <b>{{ users|length }}</b>
+        </div>
+
+        <div class="tip-box">
+            <b>Tip</b>
+            <p>Keep task status updated daily to avoid overdue work.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

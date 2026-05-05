@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="login-page">
+    <div class="login-info">
+        <h1>Welcome Back 👋</h1>
+        <p>Login to manage projects, assign tasks, and track team progress.</p>
+        <div class="login-points">
+            <span>✅ Role-based access</span>
+            <span>📊 Task dashboard</span>
+            <span>⏰ Overdue tracking</span>
+        </div>
+    </div>
+
+    <div class="login-card">
+        <h2>Login</h2>
+        <p class="login-sub">Enter your details to continue</p>
+
+        <form method="POST">
+            <label>Email</label>
+            <input class="form-control mb-3" type="email" name="email" placeholder="Enter your email" required>
+
+            <label>Password</label>
+            <input class="form-control mb-3" type="password" name="password" placeholder="Enter your password" required>
+
+            <button class="login-main-btn">Login</button>
+        </form>
+
+        <p class="signup-text">
+            New user? <a href="{{ url_for('signup') }}">Create account</a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}
