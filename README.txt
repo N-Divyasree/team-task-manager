@@ -1,7 +1,7 @@
 Team Task Manager - Full Stack Assignment
 
 Overview:
-This is a full-stack web application where users can create projects, assign tasks, and track progress with role-based access.
+Team Task Manager is a full-stack web application where users can create projects, assign tasks, and track progress with role-based access for Admin and Member users.
 
 Tech Stack:
 Frontend: HTML, CSS, Bootstrap
@@ -11,36 +11,32 @@ Deployment: Railway
 
 Features:
 1. User signup and login
-2. Role-based access: Admin and Member
+2. Role-based access control for Admin and Member
 3. Admin can create projects
 4. Admin can create and assign tasks to members
-5. Members can view assigned tasks
+5. Members can view their assigned tasks
 6. Admin and assigned members can update task status
-7. Dashboard shows total tasks, pending tasks, in-progress tasks, completed tasks, and overdue tasks
-8. Proper validations and database relationships
+7. Dashboard showing total, pending, in-progress, completed, and overdue tasks
+8. Validations and database relationships
 
 How to Run Locally:
-1. Install Python 3.11
-2. Open terminal inside project folder
+1. Install Python 3.11 or above
+2. Open terminal inside the project folder
 3. Run: pip install -r requirements.txt
 4. Run: python app.py
-5. Open browser: http://127.0.0.1:5000
+5. Open: http://127.0.0.1:5000
 
-Demo Login:
-Create one Admin account from signup page by selecting Admin role.
-Create one Member account from signup page by selecting Member role.
-Login as Admin to create projects and tasks.
-Login as Member to view and update assigned tasks.
+Demo Instructions:
+1. Create an Admin account from the signup page
+2. Create a Member account from the signup page
+3. Login as Admin
+4. Create a project
+5. Create a task and assign it to the Member
+6. Login as Member
+7. View assigned task and update status
 
 Railway Deployment:
-1. Push this project to GitHub
-2. Open Railway
-3. Create New Project
-4. Select Deploy from GitHub Repo
-5. Add PostgreSQL database plugin if needed
-6. Set environment variable SECRET_KEY
-7. Deploy the app
-8. Copy live Railway URL and submit it
+The application is deployed using Railway and is accessible through the submitted live URL.
 
 Project Structure:
 app.py - Main Flask application
